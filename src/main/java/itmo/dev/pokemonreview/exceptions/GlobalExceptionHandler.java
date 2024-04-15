@@ -12,7 +12,19 @@ import java.util.Date;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(PokemonNotFoundException.class)
-    public ResponseEntity<ErrorObject> handleNotFound(RuntimeException ex, WebRequest request) {
+    public ResponseEntity<ErrorObject> handlePokemonNotFound(PokemonNotFoundException ex, WebRequest request) {
+
+        ErrorObject errorObject = ErrorObject.builder()
+                .statusCode(HttpStatus.NOT_FOUND.value())
+                .message(ex.getMessage())
+                .timestamp(new Date())
+                .build();
+
+        return new ResponseEntity<>(errorObject, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(ReviewNotFoundException.class)
+    public ResponseEntity<ErrorObject> handleReviewNotFound(ReviewNotFoundException ex, WebRequest request) {
 
         ErrorObject errorObject = ErrorObject.builder()
                 .statusCode(HttpStatus.NOT_FOUND.value())

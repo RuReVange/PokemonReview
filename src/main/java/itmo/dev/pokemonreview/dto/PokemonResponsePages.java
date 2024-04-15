@@ -1,7 +1,5 @@
 package itmo.dev.pokemonreview.dto;
 
-import itmo.dev.pokemonreview.models.Pokemon;
-import itmo.dev.pokemonreview.models.Review;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,9 +11,12 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class PokemonDto {
+public class PokemonResponsePages {
 
-    private String name;
-    private String type;
-    private List<Review> reviews;
+    private List<PokemonDto> content;
+    private int pageNumber;
+    private int pageSize;
+    private long totalElements;
+    private long totalPages;
+    private boolean isLast;
 }

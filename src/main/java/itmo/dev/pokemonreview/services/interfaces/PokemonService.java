@@ -1,13 +1,13 @@
 package itmo.dev.pokemonreview.services.interfaces;
 
 import itmo.dev.pokemonreview.dto.PokemonDto;
-
-import java.util.List;
+import itmo.dev.pokemonreview.dto.PokemonResponsePages;
 
 public interface PokemonService {
 
     PokemonDto createPokemon(PokemonDto pokemonDto);
-    List<PokemonDto> getAllPokemons();
+    PokemonResponsePages getAllPokemons(int pageNumber, int pageSize);
     PokemonDto getPokemonById(Integer id);
     PokemonDto updatePokemon(PokemonDto pokemonDto, Integer id);
+    void deletePokemonById(Integer id);
 }

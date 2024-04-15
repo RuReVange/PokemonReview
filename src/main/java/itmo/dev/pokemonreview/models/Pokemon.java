@@ -1,11 +1,11 @@
 package itmo.dev.pokemonreview.models;
 
 import itmo.dev.pokemonreview.dto.PokemonDto;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -19,12 +19,6 @@ public class Pokemon {
     private Integer id;
     private String name;
     private String type;
-
-    public static Pokemon toModel(PokemonDto pokemonDto) {
-
-        return Pokemon.builder()
-                .name(pokemonDto.getName())
-                .type(pokemonDto.getType())
-                .build();
-    }
+    @OneToMany(mappedBy = "pokemon", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Review> reviews = new ArrayList<>();
 }
