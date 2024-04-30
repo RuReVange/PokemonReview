@@ -102,6 +102,7 @@ public class PokemonServiceImpl implements PokemonService {
         return Pokemon.builder()
                 .name(pokemonDto.getName())
                 .type(pokemonDto.getType())
+                .reviews(pokemonDto.getReviews())
                 .build();
     }
 }

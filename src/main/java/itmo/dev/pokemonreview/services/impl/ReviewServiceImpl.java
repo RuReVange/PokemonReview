@@ -22,6 +22,7 @@ public class ReviewServiceImpl implements ReviewService {
 
     @Autowired
     public ReviewServiceImpl(ReviewRepository reviewRepository, PokemonRepository pokemonRepository) {
+
         this.reviewRepository = reviewRepository;
         this.pokemonRepository = pokemonRepository;
     }
